@@ -11,6 +11,8 @@
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
+    "@storybook/builder-webpack5": "^6.4.9",
+    "@storybook/manager-webpack5": "^6.4.9",
     "@storybook/react": "^6.4.9",
     "@testing-library/react": "^12.1.2",
     "@tsconfig/recommended": "^1.0.1",
@@ -20,6 +22,7 @@
     "@types/react-dom": "^17.0.11",
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
+    "css-loader": "^6.5.1",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^7.0.0",
     "jest": "^27.4.4",
@@ -27,11 +30,15 @@
     "prettier": "2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "sass": "^1.45.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
     "stylelint": "^14.1.0",
     "stylelint-config-standard": "^24.0.0",
     "ts-jest": "^27.1.1",
     "ts-standard": "^11.0.0",
-    "typescript": "4.4.4"
+    "typescript": "4.4.4",
+    "webpack": "^5.65.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
