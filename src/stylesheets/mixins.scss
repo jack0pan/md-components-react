@@ -1,0 +1,29 @@
+@use './variables';
+
+@mixin typography($type, $size) {
+  font-family: var(--md-sys-typescale-#{$type}-#{$size}-font);
+  font-size: var(--md-sys-typescale-#{$type}-#{$size}-size);
+  font-weight: var(--md-sys-typescale-#{$type}-#{$size}-weight);
+  line-height: var(--md-sys-typescale-#{$type}-#{$size}-line-height);
+}
+
+@mixin display-large {
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: var(--md-sys-typescale-display-large-size);
+  font-weight: var(--md-sys-typescale-display-large-weight);
+  line-height: var(--md-sys-typescale-display-large-line-height);
+}
+
+@mixin display-medium {
+  font-family: var(--md-sys-typescale-display-medium-font);
+  font-size: var(--md-sys-typescale-display-medium-size);
+  font-weight: var(--md-sys-typescale-display-medium-weight);
+  line-height: var(--md-sys-typescale-display-medium-line-height);
+}
+
+@mixin display-small {
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
