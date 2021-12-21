@@ -1,5 +1,6 @@
 .button-demo {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 27px;
+  margin: 12px 0;
 }

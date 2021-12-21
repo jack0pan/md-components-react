@@ -1,24 +1,20 @@
 import React from 'react'
 import classNames from 'classnames'
-
-interface ButtonProps {
-  type: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal'
-  htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
-  children?: React.ReactNode
-  disabled?: boolean
-}
+import { ButtonProps } from './interfaces'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    const { disabled, type, htmlType, children } = props
+    const { disabled, type, htmlType, children, icon } = props
 
     const classPrefix = 'md-button'
     const classes = classNames(classPrefix, {
       [`${classPrefix}_${type}`]: true,
-      [`${classPrefix}_${type}--disabled`]: disabled
+      [`${classPrefix}_${type}--disabled`]: disabled,
+      [`${classPrefix}-icon`]: icon
     })
     return (
       <button disabled={disabled} type={htmlType} className={classes} ref={ref}>
+        {Boolean(icon) && <span className='material-icons md-18'>{icon}</span>}
         {children}
       </button>
     )

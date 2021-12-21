@@ -17,10 +17,16 @@ const meta: ComponentMeta<typeof Button> = {
 }
 
 const Template: ComponentStory<typeof Button> = (args) => (
-  <div className='button-demo'>
-    <Button {...args}>Enabled</Button>
-    <Button {...args} disabled>Disabled</Button>
-  </div>
+  <>
+    <div className='button-demo'>
+      <Button {...args}>Enabled</Button>
+      <Button {...args} disabled>Disabled</Button>
+    </div>
+    <div className='button-demo'>
+      <Button {...args} icon='add'>Enabled</Button>
+      <Button {...args} icon='add' disabled>Disabled</Button>
+    </div>
+  </>
 )
 
 export const Filled = Template.bind({})
