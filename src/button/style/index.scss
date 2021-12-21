@@ -1,4 +1,4 @@
-@import "../../stylesheets/variables";
+@import '../../stylesheets/variables';
 
 .md-button {
   position: relative;
@@ -20,7 +20,7 @@
 
   &:not(button[disabled]):hover::before,
   &:not(button[disabled]):active::before {
-    content: " ";
+    content: ' ';
     height: 40px;
     position: absolute;
     width: 100%;
