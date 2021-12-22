@@ -12,40 +12,21 @@ const meta = {
   }
 }
 
-export const Primary: React.ReactNode = () => (
+const Template: (name: string) => React.ReactNode = (name: string) => (
   <div className='color-guidance'>
-    <div className='color-guidance_primary' />
-    <div className='color-guidance_on-primary' />
-    <div className='color-guidance_primary-container' />
-    <div className='color-guidance_on-primary-container' />
+    <div className={`color-guidance_${name}`} />
+    <div className={`color-guidance_on-${name}`} />
+    <div className={`color-guidance_${name}-container`} />
+    <div className={`color-guidance_on-${name}-container`} />
   </div>
 )
 
-export const Secondary: React.ReactNode = () => (
-  <div className='color-guidance'>
-    <div className='color-guidance_secondary' />
-    <div className='color-guidance_on-secondary' />
-    <div className='color-guidance_secondary-container' />
-    <div className='color-guidance_on-secondary-container' />
-  </div>
-)
+export const Primary: React.ReactNode = () => { return Template('primary') }
 
-export const Tertiary: React.ReactNode = () => (
-  <div className='color-guidance'>
-    <div className='color-guidance_tertiary' />
-    <div className='color-guidance_on-tertiary' />
-    <div className='color-guidance_tertiary-container' />
-    <div className='color-guidance_on-tertiary-container' />
-  </div>
-)
+export const Secondary: React.ReactNode = () => { return Template('secondary') }
 
-export const Error: React.ReactNode = () => (
-  <div className='color-guidance'>
-    <div className='color-guidance_error' />
-    <div className='color-guidance_on-error' />
-    <div className='color-guidance_error-container' />
-    <div className='color-guidance_on-error-container' />
-  </div>
-)
+export const Tertiary: React.ReactNode = () => { return Template('tertiary') }
+
+export const Error: React.ReactNode = () => { return Template('error') }
 
 export default meta
