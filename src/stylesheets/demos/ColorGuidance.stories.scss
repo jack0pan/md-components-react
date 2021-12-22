@@ -1,0 +1,74 @@
+@use '../variables';
+
+@mixin color($name) {
+  display: inline-block;
+  width: 216px;
+  height: 108px;
+  background-color: var(--md-sys-color-#{$name});
+}
+
+.color-guidance {
+  &_primary {
+    @include color(primary);
+  }
+
+  &_primary-container {
+    @include color(primary-container);
+  }
+
+  &_on-primary {
+    @include color(on-primary);
+  }
+
+  &_on-primary-container {
+    @include color(on-primary-container);
+  }
+
+  &_secondary {
+    @include color(secondary);
+  }
+
+  &_secondary-container {
+    @include color(secondary-container);
+  }
+
+  &_on-secondary {
+    @include color(on-secondary);
+  }
+
+  &_on-secondary-container {
+    @include color(on-secondary-container);
+  }
+
+  &_tertiary {
+    @include color(tertiary);
+  }
+
+  &_tertiary-container {
+    @include color(tertiary-container);
+  }
+
+  &_on-tertiary {
+    @include color(on-tertiary);
+  }
+
+  &_on-tertiary-container {
+    @include color(on-tertiary-container);
+  }
+
+  &_error {
+    @include color(error);
+  }
+
+  &_error-container {
+    @include color(error-container);
+  }
+
+  &_on-error {
+    @include color(on-error);
+  }
+
+  &_on-error-container {
+    @include color(on-error-container);
+  }
+}
