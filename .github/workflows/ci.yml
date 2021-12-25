@@ -1,0 +1,98 @@
+name: Continue Integration
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - master
+jobs:
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.sha }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 16
+      - name: Cache Node.js modules
+        id: cache-node-modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install
+  code-quality:
+    name: Code Quality
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.sha }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 16
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: commitlint
+        run: echo "${{ github.event.head_commit.message }}" | yarn commitlint
+      - name: Prettier
+        run: yarn prettier --check .
+      - name: StyleLint
+        run: yarn stylelint --custom-syntax postcss-scss 'src/**/*.scss'
+      - name: Standard javascript style
+        run: yarn standard '**/*.js'
+      - name: Standard for Typescript
+        run: yarn ts-standard 'src/**/*.{ts,tsx}'
+  building:
+    name: Building
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.sha }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 16
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Type check
+        run: yarn tsc --noEmit
+  code-security:
+    name: Code Security
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.sha }}
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
