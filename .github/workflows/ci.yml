@@ -38,16 +38,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2
           ref: ${{ github.sha }}
-      - name: Get commit message
-        id: get_commit_message
-        run: |
-          if   [[ '${{ github.event_name }}' == 'push' ]]; then
-            echo ::set-output name=commit_message::$(git log --format=%B -n 1 HEAD)
-          elif [[ '${{ github.event_name }}' == 'pull_request' ]]; then
-            echo ::set-output name=commit_message::$(git log --format=%B -n 1 HEAD^2)
-          fi
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -57,8 +48,6 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: commitlint
-        run: echo "${{ steps.get_commit_message.outputs.commit_message }}" | yarn commitlint
       - name: Prettier
         run: yarn prettier --check .
       - name: StyleLint
