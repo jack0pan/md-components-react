@@ -55,7 +55,7 @@ jobs:
       - name: Standard javascript style
         run: yarn standard '**/*.js'
       - name: Standard for Typescript
-        run: yarn ts-standard 'src/**/*.{ts,tsx}'
+        run: yarn ts-standard -p tsconfig.json 'src/**/*.{ts,tsx}'
   building:
     name: Building
     needs: install
@@ -76,6 +76,8 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Type check
         run: yarn tsc --noEmit
+      - name: Compile
+        run: yarn gulp
   code-security:
     name: Code Security
     runs-on: ubuntu-latest
