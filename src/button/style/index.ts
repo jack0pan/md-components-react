@@ -1,2 +1,2 @@
 import './index.scss'
-import '../../stylesheets/icons.css'
+import '../../stylesheets/icons.scss'
