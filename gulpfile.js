@@ -7,6 +7,14 @@ const cssnano = require('gulp-cssnano')
 const through2 = require('through2')
 const ts = require('gulp-typescript')
 const rimraf = require('rimraf')
+const concat = require('gulp-concat')
+const rename = require('gulp-rename')
+const combine = require('gulp-scss-combine')
+const rollup = require('rollup')
+const rollupCommonjs = require('@rollup/plugin-commonjs')
+const rollupTS = require('@rollup/plugin-typescript')
+const { nodeResolve: rollupNodeResolve } = require('@rollup/plugin-node-resolve')
+const { terser: rollupTerser } = require('rollup-plugin-terser')
 
 const paths = {
   dest: {
@@ -14,7 +22,7 @@ const paths = {
     esm: 'es',
     dist: 'dist'
   },
-  styles: ['src/**/*.{css,scss}', '!src/**/demos/*'],
+  styles: ['src/**/*.scss', '!src/**/demos/*'],
   babelScripts: ['src/**/*.{ts,tsx}', '!src/**/demos/*.{ts,tsx}'],
   tsScripts: ['src/**/*.{ts,tsx}', '!src/**/{demos,style}/*.{ts,tsx}']
 }
@@ -48,6 +56,33 @@ const tsConfig = {
   declaration: true,
   emitDeclarationOnly: true,
   jsx: 'react'
+}
+
+async function compileUMD () {
+  const bundle = await rollup.rollup({
+    input: './src/index.ts',
+    plugins: [
+      rollupCommonjs(),
+      rollupNodeResolve(),
+      rollupTS()
+    ]
+  })
+
+  const umdOutputConfig = {
+    format: 'umd',
+    globals: { react: 'React' },
+    name: 'md-components-react',
+    sourcemap: true
+  }
+  await bundle.write({
+    ...umdOutputConfig,
+    file: './dist/index.js'
+  })
+  await bundle.write({
+    ...umdOutputConfig,
+    plugins: [rollupTerser()],
+    file: './dist/index.min.js'
+  })
 }
 
 function clean (done) {
@@ -129,11 +164,17 @@ function compileESM () {
 function compileScss () {
   return gulp
     .src(paths.styles)
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(cssnano({ zindex: false, reduceIdents: false }))
     .pipe(gulp.dest(paths.dest.lib))
     .pipe(gulp.dest(paths.dest.esm))
+    .pipe(concat('index.css'))
+    .pipe(gulp.dest(paths.dest.dist))
+    .pipe(sourcemaps.init())
+    .pipe(cssnano({ zindex: false, reduceIdents: false }))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.dest.dist))
 }
 
 function copyScss () {
@@ -141,6 +182,9 @@ function copyScss () {
     .src(paths.styles)
     .pipe(gulp.dest(paths.dest.lib))
     .pipe(gulp.dest(paths.dest.esm))
+    .pipe(combine())
+    .pipe(concat('index.scss'))
+    .pipe(gulp.dest(paths.dest.dist))
 }
 
 exports.default = gulp.series(
@@ -152,6 +196,7 @@ exports.default = gulp.series(
       compileCJS,
       compileESM
     ),
+    compileUMD,
     copyScss
   )
 )
