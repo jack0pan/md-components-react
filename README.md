@@ -1,37 +1,14 @@
-# 基于 React 的 Design System 模版库
+# Material Design for React
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjack0pan%2Fmd-components-react.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjack0pan%2Fmd-components-react?ref=badge_shield)
 
-## 开发工具
-
-- [Commitizen](https://github.com/commitizen/cz-cli)
-- [husky](https://typicode.github.io/husky/#/)
-- [lint-staged](https://github.com/okonet/lint-staged)
-
-### Code style
-
-- [Prettier](https://github.com/prettier/prettier)
-- [Stylelint](https://github.com/stylelint/stylelint)
-- [ts-standard](https://github.com/standard/ts-standard)
-
-### Lint
-
-- [commitlint](https://github.com/conventional-changelog/commitlint)
-- [ts-standard](https://github.com/standard/ts-standard)
-
-### Test
-
-- [Jest](https://jestjs.io/docs/getting-started)
-- [ts-jest](https://kulshekhar.github.io/ts-jest/docs/getting-started/installation)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-
-### Document
-
-- [Storybook](https://storybook.js.org/docs/react/get-started/install)
-
-
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjack0pan%2Fmd-components-react.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjack0pan%2Fmd-components-react?ref=badge_large)
+
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/f59272721443429eee9d28d72e698246326d6397.svg 'Repobeats analytics image')
