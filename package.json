@@ -13,8 +13,7 @@
   "sideEffects": [
     "dist/*",
     "es/**/style/*",
-    "lib/**/style/*",
-    "*.scss"
+    "lib/**/style/*"
   ],
   "author": "Jack Pan",
   "devDependencies": {
