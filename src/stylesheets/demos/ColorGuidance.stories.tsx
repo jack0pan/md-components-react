@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { ColorGuidancePage } from './ColorGuidancePage'
 
 import './ColorGuidance.stories.scss'

@@ -10,11 +10,6 @@
     "lib",
     "es"
   ],
-  "sideEffects": [
-    "dist/*",
-    "es/**/style/*",
-    "lib/**/style/*"
-  ],
   "author": "Jack Pan",
   "devDependencies": {
     "@babel/core": "^7.16.5",

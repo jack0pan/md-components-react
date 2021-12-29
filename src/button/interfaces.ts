@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 export interface ButtonProps {
   type: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal'
