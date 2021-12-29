@@ -23,6 +23,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-typescript": "^8.3.0",
+    "@size-limit/preset-big-lib": "^7.0.5",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
@@ -62,6 +63,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
+    "size-limit": "^7.0.5",
     "standard": "^16.0.4",
     "style-loader": "^3.3.1",
     "stylelint": "^14.2.0",
@@ -84,6 +86,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "size-limit": [
+    {
+      "path": "dist/index.js"
+    }
+  ],
   "dependencies": {
     "classnames": "^2.3.1"
   }

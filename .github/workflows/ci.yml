@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.sha }}
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -35,8 +33,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.sha }}
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -61,8 +57,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.sha }}
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -86,11 +80,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.sha }}
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
       - name: Autobuild
         uses: github/codeql-action/autobuild@v1
-      - name: Perform CodeQL Analysis
+      - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v1
+  perf-testing:
+    name: Performance Testing
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Size limit
+        uses: andresz1/size-limit-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          build_script: gulp
+          skip_step: install
