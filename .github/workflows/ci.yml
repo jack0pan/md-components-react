@@ -105,3 +105,21 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build_script: gulp
           skip_step: install
+  unit-testing:
+    name: Unit Testing
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.7
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Jest
+        uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          package-manager: yarn
+          skip-step: install
