@@ -1,3 +1,8 @@
 *.ts
 *.tsx
 *.js
+coverage
+dist
+es
+lib
+public
