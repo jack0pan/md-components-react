@@ -5,10 +5,13 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "lib/index.d.ts",
+  "unpkg": "dist/index.min.js",
   "files": [
     "dist",
     "lib",
-    "es"
+    "es",
+    "LICENSE",
+    "README.md"
   ],
   "author": "Jack Pan",
   "devDependencies": {
