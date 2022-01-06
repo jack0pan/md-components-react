@@ -23,15 +23,15 @@ const paths = {
     dist: 'dist'
   },
   styles: ['src/**/*.scss', '!src/**/demos/*'],
-  babelScripts: ['src/**/*.{ts,tsx}', '!src/**/demos/*.{ts,tsx}'],
-  tsScripts: ['src/**/*.{ts,tsx}', '!src/**/{demos,style}/*.{ts,tsx}']
+  babelScripts: ['src/**/*.{ts,tsx}', '!src/**/{demos,__test__}/*.{ts,tsx}'],
+  tsScripts: ['src/**/*.{ts,tsx}', '!src/**/{demos,style,__test__}/*.{ts,tsx}']
 }
 const babelConfig = {
   env: {
     esm: {
       presets: [
         [
-          '@babel/env',
+          '@babel/preset-env',
           {
             modules: false
           }
@@ -47,8 +47,8 @@ const babelConfig = {
       ]
     }
   },
-  plugins: ['@babel/plugin-transform-runtime', '@babel/proposal-class-properties'],
-  presets: ['@babel/env', '@babel/typescript', '@babel/react']
+  plugins: ['@babel/plugin-transform-runtime'],
+  presets: ['@babel/preset-env', '@babel/typescript', '@babel/react']
 }
 const tsConfig = {
   esModuleInterop: true,
