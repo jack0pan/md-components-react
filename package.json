@@ -87,11 +87,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "size-limit": [
-    {
-      "path": "dist/index.js"
-    }
-  ],
   "dependencies": {
     "classnames": "^2.3.1"
   }
