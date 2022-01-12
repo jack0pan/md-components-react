@@ -3,10 +3,10 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/index.ts',
-    // '!src/**/interface?(s).ts',
     '!src/**/demos/*',
     '!src/**/__test__/*'
   ],
+  coverageReporters: ['text'],
   moduleNameMapper: {
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js'
   },
