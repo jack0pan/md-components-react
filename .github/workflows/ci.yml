@@ -46,10 +46,8 @@ jobs:
         run: yarn prettier --check .
       - name: StyleLint
         run: yarn stylelint --custom-syntax postcss-scss 'src/**/*.scss'
-      - name: Standard javascript style
-        run: yarn standard '**/*.js'
-      - name: Standard for Typescript
-        run: yarn ts-standard -p tsconfig.json 'src/**/*.{ts,tsx}'
+      - name: ESLint
+        run: yarn eslint . --ext js,ts,tsx
   building:
     name: Building
     needs: install
