@@ -17,13 +17,12 @@ This project and everyone participating in it is governed by the [Code of Conduc
 ### Code style
 
 - [Prettier](https://github.com/prettier/prettier)
-- [Stylelint](https://github.com/stylelint/stylelint)
-- [ts-standard](https://github.com/standard/ts-standard)
 
 ### Lint
 
 - [commitlint](https://github.com/conventional-changelog/commitlint)
-- [ts-standard](https://github.com/standard/ts-standard)
+- [Stylelint](https://stylelint.io/user-guide/get-started)
+- [ESLint](https://eslint.org/docs/user-guide/getting-started)
 
 ### Test
 
