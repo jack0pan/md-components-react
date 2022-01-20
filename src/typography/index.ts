@@ -1,5 +1,5 @@
-import Typography from './Typography'
+import Typography from './Typography';
 
-export type { TypographyProps } from './interfaces'
+export type { TypographyProps } from './interfaces';
 
-export default Typography
+export default Typography;

@@ -1,57 +1,63 @@
-import * as React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Button from '../index'
-import { ButtonPage } from './ButtonPage'
+import * as React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Button from '../index';
+import { ButtonPage } from './ButtonPage';
 
-import '../style'
-import './Button.stories.css'
+import '../style';
+import './Button.stories.css';
 
 const meta: ComponentMeta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   parameters: {
     docs: {
-      page: ButtonPage
-    }
-  }
-}
+      page: ButtonPage,
+    },
+  },
+};
 
-const Template: ComponentStory<typeof Button> = (args) => (
+const Template: ComponentStory<typeof Button> = args => (
   <>
-    <div className='button-demo'>
+    <div className="button-demo">
       <Button {...args}>Enabled</Button>
-      <Button {...args} disabled>Disabled</Button>
+      <Button {...args} disabled>
+        Disabled
+      </Button>
     </div>
-    <div className='button-demo'>
-      <Button {...args} icon='add'>Enabled</Button>
-      <Button {...args} icon='add' disabled>Disabled</Button>
+    <div className="button-demo">
+      <Button {...args} icon="add">
+        Enabled
+      </Button>
+      <Button {...args} icon="add" disabled>
+        Disabled
+      </Button>
     </div>
   </>
-)
+);
 
-export const Filled = Template.bind({})
+export const Filled = Template.bind({});
 Filled.args = {
-  type: 'filled'
-}
+  type: 'filled',
+};
 
-export const Outlined = Template.bind({})
+export const Outlined = Template.bind({});
 Outlined.args = {
-  type: 'outlined'
-}
+  type: 'outlined',
+};
 
-export const Text = Template.bind({})
+export const Text = Template.bind({});
 Text.args = {
-  type: 'text'
-}
+  type: 'text',
+};
 
-export const Elevated = Template.bind({})
+export const Elevated = Template.bind({});
 Elevated.args = {
-  type: 'elevated'
-}
+  type: 'elevated',
+};
 
-export const Tonal = Template.bind({})
+export const Tonal = Template.bind({});
 Tonal.args = {
-  type: 'tonal'
-}
+  type: 'tonal',
+};
 
-export default meta
+export default meta;
