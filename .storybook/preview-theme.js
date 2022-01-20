@@ -1,7 +1,7 @@
-import { create } from '@storybook/theming/create'
+import { create } from '@storybook/theming/create';
 
 const baseTheme = {
   fontBase: '"Roboto", sans-serif',
-}
+};
 
-export default create(baseTheme)
+export default create(baseTheme);
