@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --md-sys-color-primary: #6750a4;
+  --md-sys-color-primary-container: #eaddff;
+  --md-sys-color-secondary: #625b71;
+  --md-sys-color-secondary-container: #e8def8;
+  --md-sys-color-tertiary: #7d5260;
+  --md-sys-color-tertiary-container: #ffd8e4;
+  --md-sys-color-surface: #fffbfe;
+  --md-sys-color-surface-variant: #e7e0ec;
+  --md-sys-color-background: #fffbfe;
+  --md-sys-color-error: #b3261e;
+  --md-sys-color-error-container: #f9dedc;
+  --md-sys-color-on-primary: #fff;
+  --md-sys-color-on-primary-container: #21005e;
+  --md-sys-color-on-secondary: #fff;
+  --md-sys-color-on-secondary-container: #1e192b;
+  --md-sys-color-on-tertiary: #fff;
+  --md-sys-color-on-tertiary-container: #370b1e;
+  --md-sys-color-on-surface: #1c1b1f;
+  --md-sys-color-on-surface-variant: #49454e;
+  --md-sys-color-on-background: #1c1b1f;
+  --md-sys-color-on-error: #fff;
+  --md-sys-color-on-error-container: #370b1e;
+  --md-sys-color-outline: #79747e;
+  --md-sys-color-shadow: #000;
+  --md-sys-color-inverse-surface: #313033;
+  --md-sys-color-inverse-on-surface: #f4eff4;
+  --md-sys-color-inverse-primary: #d0bcff;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2')
+    format('woff2');
+}
+
+@layer components {
+  .material-icon {
+    font-family: 'Material Icons', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+}

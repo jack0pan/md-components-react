@@ -4,12 +4,12 @@ module.exports = {
     'src/**/*.{ts,tsx}',
     '!src/**/index.ts',
     '!src/**/demos/*',
-    '!src/**/__test__/*'
+    '!src/**/__test__/*',
   ],
-  coverageReporters: ['text'],
+  coverageReporters: ['text', 'html'],
   moduleNameMapper: {
-    '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js'
+    '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',
   },
   preset: 'ts-jest',
-  testEnvironment: 'jest-environment-jsdom'
-}
+  testEnvironment: 'jest-environment-jsdom',
+};
