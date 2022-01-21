@@ -1,35 +1,53 @@
 import * as React from 'react';
 
 type Size = 'large' | 'medium' | 'small';
-type Variant = 'surface' | 'primary' | 'secondary' | 'tertiary';
+type Color = 'surface' | 'primary' | 'secondary' | 'tertiary';
 
 export interface FABProps {
+  /**
+   * The name of custom css class
+   */
   className?: string;
+  /**
+   * Disabled state of FAB
+   */
   disabled?: boolean;
+  /**
+   * Set the name of material icon
+   */
   icon: string;
+  /**
+   * Set the size of FAB
+   */
   size?: Size;
+  /**
+   * Custom css style
+   */
   style?: React.CSSProperties;
-  variant?: Variant;
+  /**
+   * Set the color of FAB
+   */
+  color?: Color;
 }
 
 const containerBaseClassName = [
-  'material-fab',
-  'flex items-center justify-center',
-  'shadow drop-shadow',
-  'disabled:shadow-none disabled:drop-shadow-none',
-  'disabled:bg-transparent disabled:text-on-surface disabled:opacity-38',
+  'material-fab', // main class
+  'flex items-center justify-center', // layout classes
+  'shadow-3 drop-shadow-3 hover:shadow-4 hover:drop-shadow-4', // box-shadow and drop shadow
+  'disabled:shadow-none disabled:drop-shadow-none', // no shadow when disabled
+  'disabled:bg-transparent disabled:text-on-surface disabled:opacity-38', // bg and text color when disabled
 ].join(' ');
 const stateLayerBaseClassName = [
-  'before:absolute before:w-full before:h-full before:opacity-0',
-  'hover:before:opacity-8',
-  'focus:before:opacity-12',
-  'active:before:opacity-12',
-  'disabled:before:bg-on-surface disabled:before:opacity-12',
+  'before:absolute before:w-full before:h-full before:opacity-0', // postion, width, height
+  'hover:before:opacity-8', // opacity when hovered
+  'focus:before:opacity-12', // opacity when focused
+  'active:before:opacity-12', // opacity when actived
+  'disabled:before:bg-on-surface disabled:before:opacity-12', // bg color and opacity when disabled
 ].join(' ');
 const iconBaseClassName = 'material-icon';
 
-const containerVariantClassname = (variant?: Variant) => {
-  switch (variant) {
+const containerColorClassname = (color?: Color) => {
+  switch (color) {
     case 'surface':
       return 'bg-surface text-primary';
     case 'secondary':
@@ -41,14 +59,14 @@ const containerVariantClassname = (variant?: Variant) => {
       return 'bg-primary-container text-on-primary-container';
   }
 };
-const stateLayerVariantClassName = (variant?: Variant) => {
-  switch (variant) {
+const stateLayerColorClassName = (color?: Color) => {
+  switch (color) {
     case 'surface':
       return 'before:bg-primary';
     case 'secondary':
       return 'before:bg-on-secondary-container';
     case 'tertiary':
-      return 'before:bg-on-terriary-container';
+      return 'before:bg-on-tertiary-container';
     case 'primary':
     default:
       return 'before:bg-on-primary-container';
@@ -76,13 +94,13 @@ const iconSizeClassName = (size?: Size) => {
   }
 };
 const FAB = React.forwardRef<HTMLButtonElement, FABProps>((props, ref) => {
-  const { className, disabled, icon, size, style, variant } = props;
+  const { className, disabled, icon, size, style, color } = props;
   const classNames = [
     className,
     containerBaseClassName,
     stateLayerBaseClassName,
-    containerVariantClassname(variant),
-    stateLayerVariantClassName(variant),
+    containerColorClassname(color),
+    stateLayerColorClassName(color),
     containerSizeClassName(size),
   ];
   return (
@@ -102,6 +120,6 @@ const FAB = React.forwardRef<HTMLButtonElement, FABProps>((props, ref) => {
 FAB.displayName = 'FAB';
 FAB.defaultProps = {
   size: 'medium',
-  variant: 'primary',
+  color: 'primary',
 };
 export default FAB;

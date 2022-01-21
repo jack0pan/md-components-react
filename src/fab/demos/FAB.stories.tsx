@@ -22,22 +22,22 @@ const Template: ComponentStoryFn<typeof FAB> = args => (
 
 export const Surface = Template.bind({});
 Surface.args = {
-  variant: 'surface',
+  color: 'surface',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: 'primary',
+  color: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: 'secondary',
+  color: 'secondary',
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  variant: 'tertiary',
+  color: 'tertiary',
 };
 
 export default meta;

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { Surface, Primary, Secondary, Tertiary } from '../demos/FAB.stories';
 
 describe('FAB', () => {
-  it('renders all variants', () => {
+  it('renders all colors', () => {
     const { rerender } = render(<Surface icon="edit" {...Surface.args} />);
     let buttons = screen.getAllByRole('presentation');
     expect(buttons).toHaveLength(2);
