@@ -1,3 +1,4 @@
+/* eslint-disable tsdoc/syntax */
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const sass = require('gulp-sass')(require('sass'));

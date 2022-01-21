@@ -1,3 +1,4 @@
+/* eslint-disable tsdoc/syntax */
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
   collectCoverageFrom: [
