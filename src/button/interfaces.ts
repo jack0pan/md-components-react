@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export type Color = 'surface' | 'primary' | 'secondary' | 'tertiary';
+export type Size = 'large' | 'medium' | 'small';
 
 interface BaseProps {
   /**
@@ -34,9 +35,13 @@ export interface FabProps extends BaseProps {
    * Set the name of material icon
    */
   icon: string;
+  /**
+   * Set the size of FAB
+   */
+  size?: Size;
 }
 
-export interface ExtendedFabProps extends Partial<FabProps> {
+export interface ExtendedFabProps extends Partial<Omit<FabProps, 'size'>> {
   /**
    * Set the label text of ExtendedFab
    */

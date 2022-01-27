@@ -9,7 +9,7 @@ import {
   Subheading,
 } from '@storybook/addon-docs';
 
-export const FABPage: React.VFC<{}> = () => {
+export const FabPage: React.VFC<{}> = () => {
   return (
     <>
       <Title>FABs</Title>

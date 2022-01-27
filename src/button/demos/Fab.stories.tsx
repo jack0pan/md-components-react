@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { ComponentStoryFn, ComponentMeta } from '@storybook/react';
-import FAB from '../FAB';
-import { FABPage } from './FABPage';
+import Fab from '../Fab';
+import { FabPage } from './FabPage';
 
-const meta: ComponentMeta<typeof FAB> = {
+const meta: ComponentMeta<typeof Fab> = {
   title: 'Components/Buttons/FAB',
-  component: FAB,
+  component: Fab,
   parameters: {
     docs: {
-      page: FABPage,
+      page: FabPage,
     },
   },
 };
 
-const Template: ComponentStoryFn<typeof FAB> = args => (
+const Template: ComponentStoryFn<typeof Fab> = args => (
   <div style={{ display: 'flex', gap: 48 }}>
-    <FAB {...args} icon="edit" />
-    <FAB {...args} icon="edit" disabled />
+    <Fab {...args} icon="edit" />
+    <Fab {...args} icon="edit" disabled />
   </div>
 );
 

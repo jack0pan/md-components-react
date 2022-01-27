@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Surface, Primary, Secondary, Tertiary } from '../demos/FAB.stories';
+import { Surface, Primary, Secondary, Tertiary } from '../demos/Fab.stories';
 
-describe('FAB', () => {
+describe('Fab', () => {
   it('renders all colors', () => {
     const { rerender } = render(<Surface icon="edit" {...Surface.args} />);
     let buttons = screen.getAllByRole('presentation');
