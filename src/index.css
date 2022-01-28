@@ -40,6 +40,14 @@
   --md-sys-elevation-drop-shadow-4: 0 2px 3px rgba(0 0 0 / 30%);
   --md-sys-elevation-box-shadow-5: 0 8px 12px 6px rgba(0 0 0 / 15%);
   --md-sys-elevation-drop-shadow-5: 0 4px 4px rgba(0 0 0 / 30%);
+  --md-sys-state-hover-state-layer-opacity: 0.08;
+  --md-sys-state-focus-state-layer-opacity: 0.12;
+  --md-sys-state-pressed-state-layer-opacity: 0.12;
+  --md-sys-typescale-label-large-font: 'Roboto';
+  --md-sys-typescale-label-large-line-height: 20px;
+  --md-sys-typescale-label-large-size: 14px;
+  --md-sys-typescale-label-large-weight: 500;
+  --md-comp-btn-background-disabled: rgba(31 31 31 / 12%);
 }
 
 @font-face {
@@ -50,20 +58,86 @@
     format('woff2');
 }
 
-@layer components {
-  .material-icon {
-    font-family: 'Material Icons', sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-  }
+.material-icon {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-btn {
+  @apply h-10 w-fit flex relative items-center pl-[16px] pr-[24px] rounded-[100px];
+  @apply text-label-large font-label-large;
+  @apply disabled:text-on-surface disabled:opacity-38 disabled:shadow-none disabled:drop-shadow-none disabled:cursor-not-allowed;
+
+  @apply before:absolute before:left-0 before:w-full before:h-full before:rounded-[100px];
+  @apply before:opacity-0 disabled:before:opacity-0 hover:before:opacity-hover focus:before:opacity-focus active:before:opacity-pressed;
+}
+
+.material-btn_elevated {
+  @apply bg-surface text-primary;
+  @apply shadow-1 drop-shadow-1 hover:shadow-2 hover:drop-shadow-2;
+
+  @apply before:bg-primary;
+}
+
+.material-btn_filled {
+  @apply bg-primary text-on-primary;
+
+  @apply before:bg-on-primary;
+}
+
+.material-btn_tonal {
+  @apply bg-secondary-container text-on-secondary-container;
+
+  @apply before:bg-on-secondary-container;
+}
+
+.material-btn_filled,
+.material-btn_tonal {
+  @apply hover:shadow-1 hover:drop-shadow-1;
+}
+
+.material-btn_elevated,
+.material-btn_filled,
+.material-btn_tonal {
+  @apply disabled:hover:shadow-none disabled:hover:drop-shadow-none;
+}
+
+.material-btn_elevated:disabled,
+.material-btn_filled:disabled,
+.material-btn_tonal:disabled {
+  background-color: var(--md-comp-btn-background-disabled);
+}
+
+.material-btn_outlined {
+  @apply border border-outline;
+  @apply focus:border-primary;
+}
+
+.material-btn_text {
+  @apply px-3;
+}
+
+.material-btn_outlined,
+.material-btn_text {
+  @apply bg-transparent text-primary;
+  @apply before:bg-primary;
+}
+
+.material-btn_outlined:disabled {
+  border-color: var(--md-comp-btn-background-disabled);
+}
+
+.material-btn_text.material-btn--icon {
+  @apply pr-4;
 }

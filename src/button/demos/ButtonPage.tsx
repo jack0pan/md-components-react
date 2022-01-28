@@ -12,31 +12,31 @@ import {
 export const ButtonPage: React.VFC<{}> = () => {
   return (
     <>
-      <Title>Buttons</Title>
+      <Title>Common buttons</Title>
       <Description>
-        Buttons help people take action, such as sending an email, sharing a document, or liking a
-        comment.
+        Buttons help people initiate actions, from sending an email, to sharing a document, to
+        liking a post.
       </Description>
       <Heading>Demos</Heading>
-      <Subheading>Filled buttons</Subheading>
-      <Canvas>
-        <Story id="components-button--filled" />
-      </Canvas>
-      <Subheading>Outline buttons</Subheading>
-      <Canvas>
-        <Story id="components-button--outlined" />
-      </Canvas>
-      <Subheading>Text buttons</Subheading>
-      <Canvas>
-        <Story id="components-button--text" />
-      </Canvas>
       <Subheading>Elevated buttons</Subheading>
       <Canvas>
-        <Story id="components-button--elevated" />
+        <Story id="components-buttons-common-buttons--elevated" />
+      </Canvas>
+      <Subheading>Filled buttons</Subheading>
+      <Canvas>
+        <Story id="components-buttons-common-buttons--filled" />
       </Canvas>
       <Subheading>Tonal buttons</Subheading>
       <Canvas>
-        <Story id="components-button--tonal" />
+        <Story id="components-buttons-common-buttons--tonal" />
+      </Canvas>
+      <Subheading>Outline buttons</Subheading>
+      <Canvas>
+        <Story id="components-buttons-common-buttons--outlined" />
+      </Canvas>
+      <Subheading>Text buttons</Subheading>
+      <Canvas>
+        <Story id="components-buttons-common-buttons--text" />
       </Canvas>
       <Heading>Props</Heading>
       <ArgsTable />

@@ -1,28 +1,28 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import { ButtonProps } from './interfaces';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { disabled, type, htmlType, children, icon } = props;
+  const { className, style, variant, icon, labelText, ...rest } = props;
 
-  const classPrefix = 'md-button';
-  const classes = classNames(classPrefix, {
-    [`${classPrefix}_${type}`]: true,
-    [`${classPrefix}_${type}--disabled`]: disabled,
-    [`${classPrefix}-icon`]: icon,
-  });
+  const classPrefix = 'material-btn';
+  const classNames = [
+    className,
+    classPrefix,
+    `${classPrefix}_${variant}`,
+    icon && `${classPrefix}--icon`,
+  ];
   return (
-    <button disabled={disabled} type={htmlType} className={classes} ref={ref}>
-      {Boolean(icon) && <span className="material-icons md-18">{icon}</span>}
-      {children}
+    <button className={classNames.join(' ')} style={style} ref={ref} {...rest}>
+      {icon && <span className={`${classPrefix}__icon material-icon text-[18px]`}>{icon}</span>}
+      {labelText && <span className={`${classPrefix}__label ml-[8px]`}>{labelText}</span>}
     </button>
   );
 });
 
 Button.displayName = 'Button';
 Button.defaultProps = {
-  type: 'filled',
-  htmlType: 'button',
+  variant: 'filled',
+  type: 'button',
   disabled: false,
 };
 

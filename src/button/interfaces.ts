@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+export type Variant = 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
 export type Color = 'surface' | 'primary' | 'secondary' | 'tertiary';
 export type Size = 'large' | 'medium' | 'small';
 
@@ -14,23 +15,34 @@ interface BaseProps {
   style?: React.CSSProperties;
 }
 
-export interface ButtonProps {
-  type: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
-  htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  children?: React.ReactNode;
-  disabled?: boolean;
+interface IconableProps {
+  /**
+   * Set the name of material icon
+   */
   icon?: string;
 }
 
-export interface FabProps extends BaseProps {
+interface LabelableProps {
   /**
-   * Set the color of ExtendedFab
+   * Set the label text of button
+   */
+  labelText?: string;
+}
+
+type BaseButtonProps = BaseProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
+
+export interface ButtonProps extends BaseButtonProps, IconableProps, LabelableProps {
+  /**
+   * Five types of button
+   */
+  variant?: Variant;
+}
+
+export interface FabProps extends BaseButtonProps {
+  /**
+   * Set the color of button
    */
   color?: Color;
-  /**
-   * Disabled state of ExtendedFab
-   */
-  disabled?: boolean;
   /**
    * Set the name of material icon
    */
