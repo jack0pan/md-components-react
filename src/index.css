@@ -141,3 +141,59 @@
 .material-btn_text.material-btn--icon {
   @apply pr-4;
 }
+
+.material-fab {
+  @apply w-14 h-14 rounded-[16px];
+  @apply flex items-center justify-center;
+  @apply shadow-3 drop-shadow-3 hover:shadow-4 hover:drop-shadow-4;
+  @apply disabled:shadow-none disabled:drop-shadow-none;
+  @apply disabled:bg-transparent disabled:text-on-surface disabled:opacity-38;
+
+  @apply before:absolute before:w-full before:h-full before:rounded-[16px];
+  @apply before:opacity-0 hover:before:opacity-8 focus:before:opacity-12 active:before:opacity-12;
+  @apply disabled:before:bg-on-surface disabled:before:opacity-12;
+}
+
+.material-fab--surface {
+  @apply bg-surface text-primary;
+
+  @apply before:bg-primary;
+}
+
+.material-fab--primary {
+  @apply bg-primary-container text-on-primary-container;
+
+  @apply before:bg-on-primary-container;
+}
+
+.material-fab--secondary {
+  @apply bg-secondary-container text-on-secondary-container;
+
+  @apply before:bg-on-secondary-container;
+}
+
+.material-fab--tertiary {
+  @apply bg-tertiary-container text-on-tertiary-container;
+
+  @apply before:bg-on-tertiary-container;
+}
+
+.material-fab--small {
+  @apply w-10 h-10 rounded-[14px];
+
+  @apply before:rounded-[14px];
+}
+
+.material-fab--large {
+  @apply w-24 h-24 rounded-[28px];
+
+  @apply before:rounded-[28px];
+}
+
+.material-fab__icon {
+  @apply text-[24px];
+}
+
+.material-fab--large > .material-fab__icon {
+  @apply text-[36px];
+}
