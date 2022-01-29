@@ -1,24 +1,15 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Surface, Primary, Secondary, Tertiary } from '../demos/ExtendedFab.stories';
+import ExtendedFab from '../ExtendedFab';
 
 describe('ExtendedFab', () => {
   it('renders all colors', () => {
-    const { rerender } = render(<Surface labelText="Extended FAB" {...Surface.args} />);
-    let buttons = screen.getAllByRole('presentation');
-    expect(buttons).toHaveLength(3);
-    expect(buttons[0].className).toContain('bg-surface');
+    const { rerender } = render(<ExtendedFab icon="edit" color="surface" />);
+    expect(screen.getByRole('button').className).toContain('surface');
 
-    rerender(<Primary labelText="Extended FAB" {...Primary.args} />);
-    buttons = screen.getAllByRole('presentation');
-    expect(buttons[0].className).toContain('bg-primary-container');
-
-    rerender(<Secondary labelText="Extended FAB" {...Secondary.args} />);
-    buttons = screen.getAllByRole('presentation');
-    expect(buttons[0].className).toContain('bg-secondary-container');
-
-    rerender(<Tertiary labelText="Extended FAB" {...Tertiary.args} />);
-    buttons = screen.getAllByRole('presentation');
-    expect(buttons[0].className).toContain('bg-tertiary-container');
+    ['primary', 'secondary', 'tertiary'].forEach(color => {
+      rerender(<ExtendedFab icon="edit" color={color as 'primary' | 'secondary' | 'tertiary'} />);
+      expect(screen.getByRole('button').className).toContain(color);
+    });
   });
 });

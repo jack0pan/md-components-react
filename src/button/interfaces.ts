@@ -1,9 +1,5 @@
 import * as React from 'react';
 
-export type Variant = 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
-export type Color = 'surface' | 'primary' | 'secondary' | 'tertiary';
-export type Size = 'large' | 'medium' | 'small';
-
 interface BaseProps {
   /**
    * The name of custom css class
@@ -35,27 +31,18 @@ export interface ButtonProps extends BaseButtonProps, IconableProps, LabelablePr
   /**
    * Five types of button
    */
-  variant?: Variant;
+  variant?: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
 }
 
-export interface FabProps extends BaseButtonProps {
+export interface FabProps extends BaseButtonProps, IconableProps {
   /**
    * Set the color of button
    */
-  color?: Color;
+  color?: 'surface' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Set the name of material icon
+   * Set the size of button
    */
-  icon: string;
-  /**
-   * Set the size of FAB
-   */
-  size?: Size;
+  size?: 'large' | 'medium' | 'small';
 }
 
-export interface ExtendedFabProps extends Partial<Omit<FabProps, 'size'>> {
-  /**
-   * Set the label text of ExtendedFab
-   */
-  labelText: string;
-}
+export interface ExtendedFabProps extends Partial<Omit<FabProps, 'size'>>, LabelableProps {}

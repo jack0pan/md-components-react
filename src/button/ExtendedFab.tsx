@@ -1,24 +1,19 @@
 import * as React from 'react';
 import { ExtendedFabProps } from './interfaces';
-import {
-  extendedFabClassName,
-  extendedFabIconClassName,
-  extendedFabLabelTextClassName,
-} from './styles';
 
 const ExtendedFab = React.forwardRef<HTMLButtonElement, ExtendedFabProps>((props, ref) => {
-  const { className, disabled, icon, style, color, labelText } = props;
+  const { className, icon, color, labelText, ...rest } = props;
+  const classPrefix = 'material-extended-fab';
+  const classNames = [
+    className,
+    classPrefix,
+    `${classPrefix}--${color}`,
+    icon && `${classPrefix}--icon`,
+  ];
   return (
-    <button
-      className={extendedFabClassName(color, className)}
-      style={style}
-      disabled={disabled}
-      type="button"
-      role="presentation"
-      ref={ref}
-    >
-      {icon && <span className={extendedFabIconClassName()}>{icon}</span>}
-      <span className={extendedFabLabelTextClassName()}>{labelText}</span>
+    <button className={classNames.join(' ')} ref={ref} {...rest}>
+      {icon && <span className={`${classPrefix}__icon material-icon`}>{icon}</span>}
+      <span className={`${classPrefix}__label`}>{labelText}</span>
     </button>
   );
 });
