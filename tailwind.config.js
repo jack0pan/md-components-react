@@ -50,15 +50,113 @@ module.exports = {
         5: 'var(--md-sys-elevation-drop-shadow-5)',
       },
       fontSize: {
+        'display-large': [
+          'var(--md-sys-typescale-display-large-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-display-large-line-height)',
+          },
+        ],
+        'display-medium': [
+          'var(--md-sys-typescale-display-medium-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-display-medium-line-height)',
+          },
+        ],
+        'display-small': [
+          'var(--md-sys-typescale-display-small-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-display-small-line-height)',
+          },
+        ],
+        'headline-large': [
+          'var(--md-sys-typescale-headline-large-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-headline-large-line-height)',
+          },
+        ],
+        'headline-medium': [
+          'var(--md-sys-typescale-headline-medium-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-headline-medium-line-height)',
+          },
+        ],
+        'headline-small': [
+          'var(--md-sys-typescale-headline-small-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-headline-small-line-height)',
+          },
+        ],
+        'title-large': [
+          'var(--md-sys-typescale-title-large-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-title-large-line-height)',
+          },
+        ],
+        'title-medium': [
+          'var(--md-sys-typescale-title-medium-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-title-medium-line-height)',
+          },
+        ],
+        'title-small': [
+          'var(--md-sys-typescale-title-small-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-title-small-line-height)',
+          },
+        ],
         'label-large': [
           'var(--md-sys-typescale-label-large-size)',
           {
             lineHeight: 'var(--md-sys-typescale-label-large-line-height)',
           },
         ],
+        'label-medium': [
+          'var(--md-sys-typescale-label-medium-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-label-medium-line-height)',
+          },
+        ],
+        'label-small': [
+          'var(--md-sys-typescale-label-small-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-label-small-line-height)',
+          },
+        ],
+        'body-large': [
+          'var(--md-sys-typescale-body-large-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-body-large-line-height)',
+          },
+        ],
+        'body-medium': [
+          'var(--md-sys-typescale-body-medium-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-body-medium-line-height)',
+          },
+        ],
+        'body-small': [
+          'var(--md-sys-typescale-body-small-size)',
+          {
+            lineHeight: 'var(--md-sys-typescale-body-small-line-height)',
+          },
+        ],
       },
       fontWeight: {
+        'display-large': 'var(--md-sys-typescale-display-large-weight)',
+        'display-medium': 'var(--md-sys-typescale-display-medium-weight)',
+        'display-small': 'var(--md-sys-typescale-display-small-weight)',
+        'headline-large': 'var(--md-sys-typescale-headline-large-weight)',
+        'headline-medium': 'var(--md-sys-typescale-headline-medium-weight)',
+        'headline-small': 'var(--md-sys-typescale-headline-small-weight)',
+        'title-large': 'var(--md-sys-typescale-title-large-weight)',
+        'title-medium': 'var(--md-sys-typescale-title-medium-weight)',
+        'title-small': 'var(--md-sys-typescale-title-small-weight)',
         'label-large': 'var(--md-sys-typescale-label-large-weight)',
+        'label-medium': 'var(--md-sys-typescale-label-medium-weight)',
+        'label-small': 'var(--md-sys-typescale-label-small-weight)',
+        'body-large': 'var(--md-sys-typescale-body-large-weight)',
+        'body-medium': 'var(--md-sys-typescale-body-medium-weight)',
+        'body-small': 'var(--md-sys-typescale-body-small-weight)',
       },
     },
   },

@@ -9,6 +9,11 @@
   border-radius: 16px;
 }
 
-.typography-demo span::first-letter {
-  text-transform: capitalize;
+.typography-demo__title {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 28px;
+  color: #625b71;
 }

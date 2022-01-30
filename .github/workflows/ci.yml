@@ -45,7 +45,7 @@ jobs:
       - name: Prettier
         run: yarn prettier --check .
       - name: StyleLint
-        run: yarn stylelint --custom-syntax postcss-scss 'src/**/*.scss'
+        run: yarn stylelint 'src/**/*.css'
       - name: ESLint
         run: yarn eslint . --ext js,ts,tsx
   building:

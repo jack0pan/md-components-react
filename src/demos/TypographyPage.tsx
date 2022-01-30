@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Canvas, Title, Description, Story, ArgsTable, Heading } from '@storybook/addon-docs';
+import { Canvas, Title, Description, Story, Heading } from '@storybook/addon-docs';
 
 export const TypographyPage: React.VFC<{}> = () => {
   return (
@@ -24,8 +24,6 @@ export const TypographyPage: React.VFC<{}> = () => {
       <Canvas>
         <Story id="styles-typography--body" />
       </Canvas>
-      <Heading>Props</Heading>
-      <ArgsTable />
     </>
   );
 };
