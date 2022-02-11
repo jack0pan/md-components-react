@@ -11,6 +11,7 @@ const meta: ComponentMeta<typeof ExtendedFab> = {
       page: ExtendedFabPage,
     },
   },
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const Template: ComponentStoryFn<typeof ExtendedFab> = args => (
