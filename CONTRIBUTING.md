@@ -10,6 +10,8 @@ This project and everyone participating in it is governed by the [Code of Conduc
 
 ## Develop tools
 
+### Git tools
+
 - [Commitizen](https://github.com/commitizen/cz-cli)
 - [husky](https://typicode.github.io/husky/#/)
 - [lint-staged](https://github.com/okonet/lint-staged)
@@ -33,3 +35,11 @@ This project and everyone participating in it is governed by the [Code of Conduc
 ### Document
 
 - [Storybook](https://storybook.js.org/docs/react/get-started/install)
+
+## Getting start
+
+first of all
+
+```bash
+npm install -g commitizen
+```
