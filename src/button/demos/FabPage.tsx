@@ -1,21 +1,13 @@
 import * as React from 'react';
-import {
-  Canvas,
-  Title,
-  Description,
-  Story,
-  ArgsTable,
-  Heading,
-  Subheading,
-} from '@storybook/addon-docs';
+import { Canvas, Title, Description, Story, ArgsTable, Heading, Subheading } from '@storybook/addon-docs';
 
 export const FabPage: React.VFC<{}> = () => {
   return (
     <>
       <Title>FABs</Title>
       <Description>
-        Floating action buttons (FABs) help people take primary actions and are used to represent
-        the most important action on a screen.
+        Floating action buttons (FABs) help people take primary actions and are used to represent the most important
+        action on a screen.
       </Description>
       <Heading>Demos</Heading>
       <Subheading>Surface</Subheading>

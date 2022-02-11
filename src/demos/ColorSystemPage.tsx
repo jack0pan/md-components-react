@@ -5,8 +5,7 @@ const ColorSystemPage = () => (
   <>
     <Title>Color system</Title>
     <Description>
-      Use color to create meaningful experiences while also expressing hierarchy, state, and brand
-      identity.
+      Use color to create meaningful experiences while also expressing hierarchy, state, and brand identity.
     </Description>
     <Canvas>
       <Story id="styles-color-system--primary" />

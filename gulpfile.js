@@ -182,11 +182,5 @@ function copyScss() {
 
 exports.default = gulp.series(
   clean,
-  gulp.parallel(
-    compileTypes,
-    compileScss,
-    gulp.series(compileCJS, compileESM),
-    compileUMD,
-    copyScss
-  )
+  gulp.parallel(compileTypes, compileScss, gulp.series(compileCJS, compileESM), compileUMD, copyScss)
 );

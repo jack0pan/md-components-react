@@ -1,21 +1,12 @@
 import * as React from 'react';
-import {
-  Canvas,
-  Title,
-  Description,
-  Story,
-  ArgsTable,
-  Heading,
-  Subheading,
-} from '@storybook/addon-docs';
+import { Canvas, Title, Description, Story, ArgsTable, Heading, Subheading } from '@storybook/addon-docs';
 
 export const ButtonPage: React.VFC<{}> = () => {
   return (
     <>
       <Title>Common buttons</Title>
       <Description>
-        Buttons help people initiate actions, from sending an email, to sharing a document, to
-        liking a post.
+        Buttons help people initiate actions, from sending an email, to sharing a document, to liking a post.
       </Description>
       <Heading>Demos</Heading>
       <Subheading>Elevated buttons</Subheading>

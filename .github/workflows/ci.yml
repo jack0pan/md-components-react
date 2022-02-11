@@ -43,11 +43,11 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Prettier
-        run: yarn prettier --check .
+        run: npx prettier --check .
       - name: StyleLint
-        run: yarn stylelint 'src/**/*.css'
+        run: npx stylelint 'src/**/*.css'
       - name: ESLint
-        run: yarn eslint . --ext js,ts,tsx
+        run: npx eslint . --ext js,ts,tsx
   building:
     name: Building
     needs: install
@@ -65,9 +65,9 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Type check
-        run: yarn tsc --noEmit
+        run: npx tsc --noEmit
       - name: Compile
-        run: yarn gulp
+        run: npx gulp
   code-security:
     name: Code Security
     runs-on: ubuntu-latest
@@ -115,4 +115,4 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Jest
-        run: yarn jest --ci --coverage
+        run: npx jest --ci --coverage

@@ -5,12 +5,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   const { className, style, variant, icon, labelText, ...rest } = props;
 
   const classPrefix = 'material-btn';
-  const classNames = [
-    className,
-    classPrefix,
-    `${classPrefix}_${variant}`,
-    icon && `${classPrefix}--icon`,
-  ];
+  const classNames = [className, classPrefix, `${classPrefix}_${variant}`, icon && `${classPrefix}--icon`];
   return (
     <button className={classNames.join(' ')} style={style} ref={ref} {...rest}>
       {icon && <span className={`${classPrefix}__icon material-icon text-[18px]`}>{icon}</span>}

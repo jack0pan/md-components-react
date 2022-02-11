@@ -1,21 +1,13 @@
 import * as React from 'react';
-import {
-  Canvas,
-  Title,
-  Description,
-  Story,
-  ArgsTable,
-  Heading,
-  Subheading,
-} from '@storybook/addon-docs';
+import { Canvas, Title, Description, Story, ArgsTable, Heading, Subheading } from '@storybook/addon-docs';
 
 export const ExtendedFabPage: React.VFC<{}> = () => {
   return (
     <>
       <Title>Extended FABs</Title>
       <Description>
-        Extended FABs help people take primary actions. They're wider than FABs to accommodate a
-        text label and larger target area.
+        Extended FABs help people take primary actions. They're wider than FABs to accommodate a text label and larger
+        target area.
       </Description>
       <Heading>Demos</Heading>
       <Subheading>Surface</Subheading>

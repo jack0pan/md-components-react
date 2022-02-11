@@ -4,12 +4,7 @@ import { FabProps } from './interfaces';
 const Fab = React.forwardRef<HTMLButtonElement, FabProps>((props, ref) => {
   const { className, icon, size, color, ...rest } = props;
   const classPrefix = 'material-fab';
-  const classNames = [
-    className,
-    classPrefix,
-    `${classPrefix}--${color}`,
-    `${classPrefix}--${size}`,
-  ];
+  const classNames = [className, classPrefix, `${classPrefix}--${color}`, `${classPrefix}--${size}`];
   return (
     <button className={classNames.join(' ')} ref={ref} {...rest}>
       <span className={`${classPrefix}__icon material-icon`}>{icon}</span>
