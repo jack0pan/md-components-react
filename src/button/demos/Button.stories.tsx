@@ -11,6 +11,7 @@ const meta: ComponentMeta<typeof Button> = {
       page: ButtonPage,
     },
   },
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const Template: ComponentStory<typeof Button> = args => (

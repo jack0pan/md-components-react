@@ -25,7 +25,7 @@ interface LabelableProps {
   labelText?: string;
 }
 
-type BaseButtonProps = BaseProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
+type BaseButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export interface ButtonProps extends BaseButtonProps, IconableProps, LabelableProps {
   /**

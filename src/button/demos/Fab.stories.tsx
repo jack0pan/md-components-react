@@ -11,6 +11,7 @@ const meta: ComponentMeta<typeof Fab> = {
       page: FabPage,
     },
   },
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const Template: ComponentStoryFn<typeof Fab> = args => (
