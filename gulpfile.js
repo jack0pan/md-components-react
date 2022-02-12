@@ -1,20 +1,20 @@
 /* eslint-disable tsdoc/syntax */
 const gulp = require("gulp");
-const babel = require("gulp-babel");
-const sourcemaps = require("gulp-sourcemaps");
+const postcss = require("gulp-postcss");
 const cssnano = require("gulp-cssnano");
+const sourcemaps = require("gulp-sourcemaps");
+const babel = require("gulp-babel");
 const through2 = require("through2");
 const ts = require("gulp-typescript");
 const rimraf = require("rimraf");
 const rename = require("gulp-rename");
 const rollup = require("rollup");
-const rollupCommonjs = require("@rollup/plugin-commonjs");
+const rollupCommonJs = require("@rollup/plugin-commonjs");
 const rollupTS = require("@rollup/plugin-typescript");
 const { nodeResolve: rollupNodeResolve } = require("@rollup/plugin-node-resolve");
 const { terser: rollupTerser } = require("rollup-plugin-terser");
-const postcss = require("gulp-postcss");
 
-const DIST_PATH = "dist";
+const UMD_OUTPUT_PATH = "dist";
 
 const paths = {
   dest: {
@@ -57,7 +57,7 @@ const tsConfig = {
 };
 
 function clean(done) {
-  rimraf.sync(DIST_PATH);
+  rimraf.sync(UMD_OUTPUT_PATH);
   rimraf.sync(paths.dest.lib);
   rimraf.sync(paths.dest.esm);
   done(0);
@@ -67,34 +67,34 @@ function bundleCss() {
   return gulp
     .src("src/index.css")
     .pipe(postcss())
-    .pipe(gulp.dest(DIST_PATH))
+    .pipe(gulp.dest(UMD_OUTPUT_PATH))
     .pipe(sourcemaps.init())
     .pipe(cssnano({ zindex: false, reduceIdents: false }))
     .pipe(rename({ suffix: ".min" }))
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(DIST_PATH));
+    .pipe(gulp.dest(UMD_OUTPUT_PATH));
 }
 
-async function compileUMD() {
+async function bundleUmd() {
   const bundle = await rollup.rollup({
     input: "./src/index.ts",
-    plugins: [rollupCommonjs(), rollupNodeResolve(), rollupTS()],
+    plugins: [rollupCommonJs(), rollupNodeResolve(), rollupTS()],
   });
 
   const umdOutputConfig = {
     format: "umd",
     globals: { react: "React" },
-    name: "md-components-react",
+    name: "material-components",
     sourcemap: true,
   };
   await bundle.write({
     ...umdOutputConfig,
-    file: `./${DIST_PATH}/index.js`,
+    file: `./${UMD_OUTPUT_PATH}/index.js`,
   });
   await bundle.write({
     ...umdOutputConfig,
     plugins: [rollupTerser()],
-    file: `./${DIST_PATH}/index.min.js`,
+    file: `./${UMD_OUTPUT_PATH}/index.min.js`,
   });
 }
 
@@ -165,5 +165,5 @@ function compileESM() {
 
 exports.default = gulp.series(
   clean,
-  gulp.parallel(bundleCss, gulp.series(compileCJS, compileESM), compileTypes, compileUMD)
+  gulp.parallel(bundleCss, bundleUmd, gulp.series(compileCJS, compileESM), compileTypes)
 );
