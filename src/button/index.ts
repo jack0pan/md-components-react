@@ -1,6 +1,6 @@
-import OriginButton from './Button';
-import Fab from './Fab';
-import ExtendedFab from './ExtendedFab';
+import OriginButton from "./Button";
+import Fab from "./Fab";
+import ExtendedFab from "./ExtendedFab";
 
 export type ButtonProps = typeof OriginButton & {
   Fab: typeof Fab;

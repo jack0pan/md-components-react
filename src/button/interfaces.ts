@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface BaseProps {
   /**
@@ -31,18 +31,18 @@ export interface ButtonProps extends BaseButtonProps, IconableProps, LabelablePr
   /**
    * Five types of button
    */
-  variant?: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
+  variant?: "filled" | "outlined" | "text" | "elevated" | "tonal";
 }
 
 export interface FabProps extends BaseButtonProps, IconableProps {
   /**
    * Set the color of button
    */
-  color?: 'surface' | 'primary' | 'secondary' | 'tertiary';
+  color?: "surface" | "primary" | "secondary" | "tertiary";
   /**
    * Set the size of button
    */
-  size?: 'large' | 'medium' | 'small';
+  size?: "large" | "medium" | "small";
 }
 
-export interface ExtendedFabProps extends Partial<Omit<FabProps, 'size'>>, LabelableProps {}
+export interface ExtendedFabProps extends Partial<Omit<FabProps, "size">>, LabelableProps {}

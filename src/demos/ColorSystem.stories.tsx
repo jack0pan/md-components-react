@@ -1,10 +1,10 @@
-import * as React from 'react';
-import ColorSystemPage from './ColorSystemPage';
+import * as React from "react";
+import ColorSystemPage from "./ColorSystemPage";
 
-import './ColorSystem.stories.css';
+import "./ColorSystem.stories.css";
 
 const meta = {
-  title: 'Styles/Color system',
+  title: "Styles/Color system",
   parameters: {
     docs: {
       page: ColorSystemPage,

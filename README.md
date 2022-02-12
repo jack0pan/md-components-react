@@ -26,4 +26,4 @@ See the [contributing](CONTRIBUTING.md) file! PRs accepted.
 
 ## Stats
 
-![Alt](https://repobeats.axiom.co/api/embed/f59272721443429eee9d28d72e698246326d6397.svg 'Repobeats analytics image')
+![Alt](https://repobeats.axiom.co/api/embed/f59272721443429eee9d28d72e698246326d6397.svg "Repobeats analytics image")

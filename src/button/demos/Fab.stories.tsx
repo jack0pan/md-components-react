@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { ComponentStoryFn, ComponentMeta } from '@storybook/react';
-import Fab from '../Fab';
-import { FabPage } from './FabPage';
+import * as React from "react";
+import { ComponentStoryFn, ComponentMeta } from "@storybook/react";
+import Fab from "../Fab";
+import { FabPage } from "./FabPage";
 
 const meta: ComponentMeta<typeof Fab> = {
-  title: 'Components/Buttons/FAB',
+  title: "Components/Buttons/FAB",
   component: Fab,
   parameters: {
     docs: {
       page: FabPage,
     },
   },
-  argTypes: { onClick: { action: 'clicked' } },
+  argTypes: { onClick: { action: "clicked" } },
 };
 
-const Template: ComponentStoryFn<typeof Fab> = args => (
-  <div style={{ display: 'flex', gap: 48 }}>
+const Template: ComponentStoryFn<typeof Fab> = (args) => (
+  <div style={{ display: "flex", gap: 48 }}>
     <Fab {...args} icon="edit" />
     <Fab {...args} icon="edit" disabled />
   </div>
@@ -23,22 +23,22 @@ const Template: ComponentStoryFn<typeof Fab> = args => (
 
 export const Surface = Template.bind({});
 Surface.args = {
-  color: 'surface',
+  color: "surface",
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  color: 'primary',
+  color: "primary",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  color: 'secondary',
+  color: "secondary",
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  color: 'tertiary',
+  color: "tertiary",
 };
 
 export default meta;
