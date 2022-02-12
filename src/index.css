@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --md-ref-typeface-brand-regular: 'Roboto';
+  --md-ref-typeface-brand-regular: "Roboto";
   --md-ref-typeface-weight-regular: 400;
   --md-ref-typeface-weight-medium: 500;
   --md-sys-color-primary: #6750a4;
@@ -124,14 +124,14 @@
 }
 
 @font-face {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2') format('woff2');
+  src: url("https://fonts.gstatic.com/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2") format("woff2");
 }
 
 .material-icon {
-  font-family: 'Material Icons', sans-serif;
+  font-family: "Material Icons", sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -142,7 +142,7 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
 

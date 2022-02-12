@@ -101,7 +101,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           build-script: gulp
-          pattern: './dist/*.min.{js,css}'
+          pattern: "./dist/*.min.{js,css}"
   unit-testing:
     name: Unit Testing
     needs: install
