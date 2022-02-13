@@ -1,13 +1,12 @@
 /* eslint-disable tsdoc/syntax */
 const gulp = require("gulp");
+const rimraf = require("rimraf");
 const postcss = require("gulp-postcss");
 const cssnano = require("gulp-cssnano");
-const sourcemaps = require("gulp-sourcemaps");
-const babel = require("gulp-babel");
-const through2 = require("through2");
-const ts = require("gulp-typescript");
-const rimraf = require("rimraf");
 const rename = require("gulp-rename");
+const sourcemaps = require("gulp-sourcemaps");
+const ts = require("gulp-typescript");
+const babel = require("gulp-babel");
 const rollup = require("rollup");
 const rollupCommonJs = require("@rollup/plugin-commonjs");
 const rollupTS = require("@rollup/plugin-typescript");
@@ -15,51 +14,14 @@ const { nodeResolve: rollupNodeResolve } = require("@rollup/plugin-node-resolve"
 const { terser: rollupTerser } = require("rollup-plugin-terser");
 
 const UMD_OUTPUT_PATH = "dist";
-
-const paths = {
-  dest: {
-    lib: "lib",
-    esm: "es",
-  },
-  babelScripts: ["src/**/*.{ts,tsx}", "!src/**/{demos,__test__}/*.{ts,tsx}"],
-  tsScripts: ["src/**/*.{ts,tsx}", "!src/**/{demos,style,__test__}/*.{ts,tsx}"],
-};
-const babelConfig = {
-  env: {
-    esm: {
-      presets: [
-        [
-          "@babel/preset-env",
-          {
-            modules: false,
-          },
-        ],
-      ],
-      plugins: [
-        [
-          "@babel/plugin-transform-runtime",
-          {
-            useESModules: true,
-          },
-        ],
-      ],
-    },
-  },
-  plugins: ["@babel/plugin-transform-runtime"],
-  presets: ["@babel/preset-env", "@babel/typescript", "@babel/react"],
-};
-const tsConfig = {
-  esModuleInterop: true,
-  skipLibCheck: true,
-  declaration: true,
-  emitDeclarationOnly: true,
-  jsx: "react",
-};
+const CJS_OUTPUT_PATH = "lib";
+const ESM_OUTPUT_PATH = "esm";
+const TS_INTPUT_PATHS = ["src/**/*.{ts,tsx}", "!src/**/{demos,__test__}/*.{ts,tsx}"];
 
 function clean(done) {
   rimraf.sync(UMD_OUTPUT_PATH);
-  rimraf.sync(paths.dest.lib);
-  rimraf.sync(paths.dest.esm);
+  rimraf.sync(CJS_OUTPUT_PATH);
+  rimraf.sync(ESM_OUTPUT_PATH);
   done(0);
 }
 
@@ -75,7 +37,7 @@ function bundleCss() {
     .pipe(gulp.dest(UMD_OUTPUT_PATH));
 }
 
-async function bundleUmd() {
+async function bundleTsToUmd() {
   const bundle = await rollup.rollup({
     input: "./src/index.ts",
     plugins: [rollupCommonJs(), rollupNodeResolve(), rollupTS()],
@@ -98,23 +60,20 @@ async function bundleUmd() {
   });
 }
 
-/**
- * inject css importing.
- *
- * example:
- * ```
- * import './index.scss' => import './index.css'
- * import '../test-comp/style' => import '../test-comp/style/css.js'
- * import '../test-comp/style/index.js' => import '../test-comp/style/css.js'
- * ```
- *
- * @param {string} content
- */
-function cssInjection(content) {
-  return content
-    .replace(/\/style\/?'/g, "/style/css'")
-    .replace(/\/style\/?"/g, '/style/css"')
-    .replace(/\.scss/g, ".css");
+function compileTsToTypes() {
+  return gulp
+    .src(TS_INTPUT_PATHS)
+    .pipe(
+      ts({
+        esModuleInterop: true,
+        skipLibCheck: true,
+        declaration: true,
+        emitDeclarationOnly: true,
+        jsx: "react",
+      })
+    )
+    .pipe(gulp.dest(CJS_OUTPUT_PATH))
+    .pipe(gulp.dest(ESM_OUTPUT_PATH));
 }
 
 /**
@@ -123,47 +82,50 @@ function cssInjection(content) {
  * @param {string} babelEnv babel environment var
  * @param {string} destDir dest directory
  */
-function compileScripts(babelEnv, destDir) {
-  const { babelScripts } = paths;
+function compileTs(babelEnv, destDir) {
   process.env.BABEL_ENV = babelEnv;
   return gulp
-    .src(babelScripts)
+    .src(TS_INTPUT_PATHS)
     .pipe(sourcemaps.init())
-    .pipe(babel(babelConfig))
     .pipe(
-      through2.obj(function z(file, encoding, next) {
-        this.push(file.clone());
-        if (file.path.match(/(\/|\\)style(\/|\\)index\.js/)) {
-          const content = file.contents.toString(encoding);
-          file.contents = Buffer.from(cssInjection(content));
-          file.path = file.path.replace(/index\.js/, "css.js");
-          this.push(file);
-          next();
-        } else {
-          next();
-        }
+      babel({
+        env: {
+          esm: {
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  modules: false,
+                },
+              ],
+            ],
+            plugins: [
+              [
+                "@babel/plugin-transform-runtime",
+                {
+                  useESModules: true,
+                },
+              ],
+            ],
+          },
+        },
+        plugins: ["@babel/plugin-transform-runtime"],
+        presets: ["@babel/preset-env", "@babel/typescript", "@babel/react"],
       })
     )
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(destDir));
 }
 
-function compileTypes() {
-  const { dest, tsScripts } = paths;
-  return gulp.src(tsScripts).pipe(ts(tsConfig)).pipe(gulp.dest(dest.lib)).pipe(gulp.dest(dest.esm));
+function compileTsToCjs() {
+  return compileTs("cjs", CJS_OUTPUT_PATH);
 }
 
-function compileCJS() {
-  const { dest } = paths;
-  return compileScripts("cjs", dest.lib);
-}
-
-function compileESM() {
-  const { dest } = paths;
-  return compileScripts("esm", dest.esm);
+function compileTsToEsm() {
+  return compileTs("esm", ESM_OUTPUT_PATH);
 }
 
 exports.default = gulp.series(
   clean,
-  gulp.parallel(bundleCss, bundleUmd, gulp.series(compileCJS, compileESM), compileTypes)
+  gulp.parallel(bundleCss, bundleTsToUmd, compileTsToTypes, gulp.series(compileTsToCjs, compileTsToEsm))
 );
