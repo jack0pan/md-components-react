@@ -1,4 +1,3 @@
-/* eslint-disable tsdoc/syntax */
 const gulp = require("gulp");
 const rimraf = require("rimraf");
 const postcss = require("gulp-postcss");
@@ -76,12 +75,6 @@ function compileTsToTypes() {
     .pipe(gulp.dest(ESM_OUTPUT_PATH));
 }
 
-/**
- * compile ts file to cjs or esm
- *
- * @param {string} babelEnv babel environment var
- * @param {string} destDir dest directory
- */
 function compileTs(babelEnv, destDir) {
   process.env.BABEL_ENV = babelEnv;
   return gulp
