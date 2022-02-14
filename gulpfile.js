@@ -75,50 +75,44 @@ function compileTsToTypes() {
     .pipe(gulp.dest(ESM_OUTPUT_PATH));
 }
 
-function compileTs(babelEnv, destDir) {
-  process.env.BABEL_ENV = babelEnv;
+function compileTsToCjs() {
   return gulp
     .src(TS_INTPUT_PATHS)
     .pipe(sourcemaps.init())
     .pipe(
       babel({
-        env: {
-          esm: {
-            presets: [
-              [
-                "@babel/preset-env",
-                {
-                  modules: false,
-                },
-              ],
-            ],
-            plugins: [
-              [
-                "@babel/plugin-transform-runtime",
-                {
-                  useESModules: true,
-                },
-              ],
-            ],
-          },
-        },
         plugins: ["@babel/plugin-transform-runtime"],
         presets: ["@babel/preset-env", "@babel/typescript", "@babel/react"],
       })
     )
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(destDir));
-}
-
-function compileTsToCjs() {
-  return compileTs("cjs", CJS_OUTPUT_PATH);
+    .pipe(gulp.dest(CJS_OUTPUT_PATH));
 }
 
 function compileTsToEsm() {
-  return compileTs("esm", ESM_OUTPUT_PATH);
+  return gulp
+    .src(TS_INTPUT_PATHS)
+    .pipe(sourcemaps.init())
+    .pipe(
+      babel({
+        plugins: ["@babel/plugin-transform-runtime"],
+        presets: [
+          [
+            "@babel/preset-env",
+            {
+              modules: false,
+            },
+          ],
+          "@babel/typescript",
+          "@babel/react",
+        ],
+      })
+    )
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest(ESM_OUTPUT_PATH));
 }
 
 exports.default = gulp.series(
   clean,
-  gulp.parallel(bundleCss, bundleTsToUmd, compileTsToTypes, gulp.series(compileTsToCjs, compileTsToEsm))
+  gulp.parallel(bundleCss, bundleTsToUmd, compileTsToTypes, compileTsToCjs, compileTsToEsm)
 );
