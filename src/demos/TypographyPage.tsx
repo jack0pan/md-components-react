@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Canvas, Title, Description, Story, Heading } from "@storybook/addon-docs";
+import * as React from 'react';
+import { Canvas, Title, Description, Story, Heading } from '@storybook/addon-docs';
 
 export const TypographyPage: React.VFC<{}> = () => {
   return (
