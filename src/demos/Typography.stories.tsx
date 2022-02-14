@@ -1,10 +1,10 @@
-import * as React from "react";
-import { TypographyPage } from "./TypographyPage";
+import * as React from 'react';
+import { TypographyPage } from './TypographyPage';
 
-import "./Typography.stories.css";
+import './Typography.stories.css';
 
 const meta = {
-  title: "Styles/Typography",
+  title: 'Styles/Typography',
   parameters: {
     docs: {
       page: TypographyPage,

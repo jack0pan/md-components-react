@@ -1,9 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+@import './button/index.css';
 
 :root {
-  --md-ref-typeface-brand-regular: "Roboto";
+  --md-ref-typeface-brand-regular: 'Roboto';
   --md-ref-typeface-weight-regular: 400;
   --md-ref-typeface-weight-medium: 500;
   --md-sys-color-primary: #6750a4;
@@ -124,14 +128,14 @@
 }
 
 @font-face {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.gstatic.com/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2") format("woff2");
+  src: url('https://fonts.gstatic.com/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2') format('woff2');
 }
 
 .material-icon {
-  font-family: "Material Icons", sans-serif;
+  font-family: 'Material Icons', sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -142,153 +146,6 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  font-feature-settings: "liga";
+  font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
-}
-
-.material-btn {
-  @apply h-10 w-fit flex relative items-center pl-4 pr-5 rounded-[100px];
-  @apply text-label-large font-label-large;
-  @apply disabled:text-on-surface disabled:opacity-38 disabled:shadow-none disabled:drop-shadow-none disabled:cursor-not-allowed;
-
-  @apply before:absolute before:left-0 before:w-full before:h-full before:rounded-[100px];
-  @apply before:opacity-0 disabled:before:opacity-0 hover:before:opacity-hover focus:before:opacity-focus active:before:opacity-pressed;
-}
-
-.material-btn_elevated {
-  @apply bg-surface text-primary;
-  @apply shadow-1 drop-shadow-1 hover:shadow-2 hover:drop-shadow-2;
-
-  @apply before:bg-primary;
-}
-
-.material-btn_filled {
-  @apply bg-primary text-on-primary;
-
-  @apply before:bg-on-primary;
-}
-
-.material-btn_tonal {
-  @apply bg-secondary-container text-on-secondary-container;
-
-  @apply before:bg-on-secondary-container;
-}
-
-.material-btn_filled,
-.material-btn_tonal {
-  @apply hover:shadow-1 hover:drop-shadow-1;
-}
-
-.material-btn_elevated,
-.material-btn_filled,
-.material-btn_tonal {
-  @apply disabled:hover:shadow-none disabled:hover:drop-shadow-none;
-}
-
-.material-btn_elevated:disabled,
-.material-btn_filled:disabled,
-.material-btn_tonal:disabled {
-  background-color: var(--md-comp-btn-background-disabled);
-}
-
-.material-btn_outlined {
-  @apply border border-outline;
-  @apply focus:border-primary;
-}
-
-.material-btn_text {
-  @apply pl-1 pr-3;
-}
-
-.material-btn_outlined,
-.material-btn_text {
-  @apply bg-transparent text-primary;
-  @apply before:bg-primary;
-}
-
-.material-btn_outlined:disabled {
-  border-color: var(--md-comp-btn-background-disabled);
-}
-
-.material-btn_text.material-btn--icon {
-  @apply pl-3 pr-4;
-}
-
-.material-fab {
-  @apply w-14 h-14 rounded-[16px];
-  @apply flex items-center justify-center;
-}
-
-.material-fab--small {
-  @apply w-10 h-10 rounded-[14px];
-
-  @apply before:rounded-[14px];
-}
-
-.material-fab--large {
-  @apply w-24 h-24 rounded-[28px];
-
-  @apply before:rounded-[28px];
-}
-
-.material-fab__icon {
-  @apply text-[24px];
-}
-
-.material-fab--large > .material-fab__icon {
-  @apply text-[36px];
-}
-
-.material-extended-fab {
-  @apply h-14 w-fit min-w-[80px] px-5 flex items-center gap-x-2 rounded-[16px];
-  @apply text-label-large font-label-large;
-
-  @apply before:rounded-[16px];
-}
-
-.material-extended-fab--icon {
-  @apply pl-4;
-}
-
-.material-fab,
-.material-extended-fab {
-  @apply shadow-3 drop-shadow-3 hover:shadow-4 hover:drop-shadow-4;
-  @apply disabled:shadow-none disabled:drop-shadow-none;
-  @apply disabled:bg-transparent disabled:text-on-surface disabled:opacity-38;
-
-  @apply before:absolute before:left-0 before:w-full before:h-full before:rounded-[16px];
-  @apply before:opacity-0 hover:before:opacity-8 focus:before:opacity-12 active:before:opacity-12;
-  @apply disabled:before:bg-on-surface disabled:before:opacity-12;
-}
-
-.material-fab--surface,
-.material-extended-fab--surface {
-  @apply bg-surface text-primary;
-
-  @apply before:bg-primary;
-}
-
-.material-fab--primary,
-.material-extended-fab--primary {
-  @apply bg-primary-container text-on-primary-container;
-
-  @apply before:bg-on-primary-container;
-}
-
-.material-fab--secondary,
-.material-extended-fab--secondary {
-  @apply bg-secondary-container text-on-secondary-container;
-
-  @apply before:bg-on-secondary-container;
-}
-
-.material-fab--tertiary,
-.material-extended-fab--tertiary {
-  @apply bg-tertiary-container text-on-tertiary-container;
-
-  @apply before:bg-on-tertiary-container;
-}
-
-.material-extended-fab > .material-exteneded-fab__label {
-  @apply ml-3;
 }
