@@ -1,9 +1,8 @@
 # Security Policy
 
-If you discover a security issue in xxx Design, please report it by sending an
-email to [xxx@xxx.xxx](mailto:xxx@xxx.xxx).
+If you discover a security issue in Material Components for React, please report it by reporting a [issuse](https://github.com/jack0pan/md-components-react/issues/new/choose) on github.
 
 This will allow us to assess the risk, and make a fix available before we add a
 bug report to the GitHub repository.
 
-Thanks for helping make GrowingIO Design safe for everyone.
+Thanks for helping make Material Components safe for everyone.
