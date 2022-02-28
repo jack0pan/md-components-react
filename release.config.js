@@ -1,4 +1,5 @@
+const { plugins } = require('semantic-release-npm-config');
+
 module.exports = {
-  extends: 'semantic-release-npm-config',
-  plugins: ['@semantic-release/github'],
+  plugins: plugins.concat(['@semantic-release/github']),
 };
