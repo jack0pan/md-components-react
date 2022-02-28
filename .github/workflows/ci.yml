@@ -7,8 +7,8 @@ on:
     branches:
       - master
 jobs:
-  install:
-    name: Install dependencies
+  preparation:
+    name: Preparation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -23,12 +23,12 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Install
+      - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn install
+        run: yarn install --frozen-lockfile
   code-quality:
     name: Code Quality
-    needs: install
+    needs: preparation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -50,7 +50,7 @@ jobs:
         run: npx eslint . --ext js,ts,tsx
   building:
     name: Building
-    needs: install
+    needs: preparation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -67,7 +67,7 @@ jobs:
       - name: Type check
         run: npx tsc --noEmit
       - name: Compile
-        run: npx gulp
+        run: npx gulp compile
   code-security:
     name: Code Security
     runs-on: ubuntu-latest
@@ -88,7 +88,7 @@ jobs:
         uses: github/codeql-action/analyze@v1
   perf-testing:
     name: Performance Testing
-    needs: install
+    needs: preparation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -102,11 +102,11 @@ jobs:
         uses: preactjs/compressed-size-action@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          build-script: gulp
+          build-script: gulp bundle
           pattern: './dist/*.min.{js,css}'
   unit-testing:
     name: Unit Testing
-    needs: install
+    needs: preparation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
