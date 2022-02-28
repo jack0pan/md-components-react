@@ -112,6 +112,9 @@ function compileTsToEsm() {
     .pipe(gulp.dest(ESM_OUTPUT_PATH));
 }
 
+exports.clean = clean;
+exports.bundle = gulp.parallel(bundleCss, bundleTsToUmd);
+exports.compile = gulp.parallel(compileTsToTypes, compileTsToCjs, compileTsToEsm);
 exports.default = gulp.series(
   clean,
   gulp.parallel(bundleCss, bundleTsToUmd, compileTsToTypes, compileTsToCjs, compileTsToEsm)
