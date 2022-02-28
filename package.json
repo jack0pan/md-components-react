@@ -95,8 +95,5 @@
   "dependencies": {
     "@babel/runtime": "^7.17.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jack0pan/md-components-react.git"
-  }
+  "repository": "git@github.com:jack0pan/md-components-react.git"
 }
