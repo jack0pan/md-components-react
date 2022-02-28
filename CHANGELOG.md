@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/jack0pan/md-components-react/compare/v1.0.0...v1.0.1) (2022-02-28)
+
+
+### Bug Fixes
+
+* add build step in cd workflow ([e7bfb7a](https://github.com/jack0pan/md-components-react/commit/e7bfb7a036b8ffff405c6ba2d0050f38d0362239))
+
 # 1.0.0 (2022-02-28)
 
 
