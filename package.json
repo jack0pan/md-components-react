@@ -1,6 +1,6 @@
 {
   "name": "md-components-react",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Modular and customizable Material Design UI components for React.",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -25,6 +25,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-typescript": "^8.3.0",
+    "@semantic-release/github": "^8.0.2",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
@@ -69,6 +70,8 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.67.1",
     "rollup-plugin-terser": "^7.0.2",
+    "semantic-release": "^19.0.2",
+    "semantic-release-npm-config": "^1.0.0",
     "style-loader": "^3.3.1",
     "stylelint": "^14.5.0",
     "stylelint-config-prettier": "^9.0.3",
@@ -91,5 +94,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jack0pan/md-components-react.git"
   }
 }
