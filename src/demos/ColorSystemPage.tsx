@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react';
 import { Canvas, Title, Description, Story } from '@storybook/addon-docs';
 

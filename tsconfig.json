@@ -3,5 +3,6 @@
     "jsx": "react"
   },
   "extends": "@tsconfig/recommended/tsconfig.json",
-  "include": ["./src"]
+  "include": ["src"],
+  "exclude": ["**/demos/*.tsx"]
 }
