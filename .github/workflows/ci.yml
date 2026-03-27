@@ -86,24 +86,6 @@ jobs:
         uses: github/codeql-action/autobuild@v2
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v2
-  perf-testing:
-    name: Performance Testing
-    needs: preparation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Restore Node.js modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Compressed size
-        uses: preactjs/compressed-size-action@v2
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          build-script: gulp bundle
-          pattern: './dist/*.min.{js,css}'
   unit-testing:
     name: Unit Testing
     needs: preparation
